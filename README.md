@@ -8,7 +8,7 @@ API de autenticação com CRUD: https://www.youtube.com/playlist?list=PL85ITvJ7F
 - Recuperação de senha com token via e-mail
 - CRUD
 <br>
-### Utilizando
+## Utilizando
 - MongoDB
 - Express
 - Mongoose
@@ -17,4 +17,4 @@ API de autenticação com CRUD: https://www.youtube.com/playlist?list=PL85ITvJ7F
 - Variáveis de ambiente dotenv
 - Bcrypt
 <br>
-### Em breve haverá um front para consumí-la! :)
+## Em breve haverá um front para consumí-la! :)
