@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 require('./app/controllers/index')(app)
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT || 3003)
 
 
 
