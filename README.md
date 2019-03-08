@@ -1,12 +1,12 @@
 # auth-api-nodejs
 API de autenticação com CRUD: https://www.youtube.com/playlist?list=PL85ITvJ7FLoiXVwHXeOsOuVppGbBzo2dp <br>
 
-- Cadastro
-- Verifica e-mail existente no banco de dados
-- Criptografa a senha
-- Cria token de sessão para acessar páginas que requerem privilegio
-- Recuperação de senha com token via e-mail
-- CRUD
+-[x] Cadastro
+-[x] Verifica e-mail existente no banco de dados
+-[x] Criptografa a senha
+-[x] Cria token de sessão para acessar páginas que requerem privilegio
+-[x] Recuperação de senha com token via e-mail
+-[x] CRUD
 <br>
 
 ## Utilizando
@@ -19,4 +19,4 @@ API de autenticação com CRUD: https://www.youtube.com/playlist?list=PL85ITvJ7F
 - Bcrypt
 <br>
 
-## Em breve haverá um front para consumí-la! :)
+## Front-end em desenvolvimento!
