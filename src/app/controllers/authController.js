@@ -20,7 +20,7 @@ router.post("/register", async(req, res) => {
 
    try{
       if (await User.findOne({ email }))
-         return res.status(400).send("This e-mail already exists on our databases.")
+         return res.status(400).send({error: "This e-mail already exists on our databases."})
 
       const newUser = await User.create(req.body)
 
@@ -31,7 +31,7 @@ router.post("/register", async(req, res) => {
          token: generateToken( { id: newUser.id } )
       })
    }catch(err){
-      return res.status(400).send("Registration failed.")
+      return res.status(400).send({error: "Registration failed."})
    }
 })
 
@@ -41,10 +41,10 @@ router.post("/authenticate", async(req, res) => {
    const user = await User.findOne({ email }).select("+password")
 
    if (!user)
-      return res.status(400).send("Invalid username.")
+      return res.status(400).send({error: "Invalid username."})
 
    if (!await bcrypt.compare(password, user.password))
-      return res.status(400).send("Invalid password.")
+      return res.status(400).send({error: "Invalid password."})
 
    user.password = undefined
 
@@ -61,7 +61,7 @@ router.post('/forgot_password', async(req, res) => {
       const user = await User.findOne({email})
 
       if (!user)
-         return res.status(400).send("Invalid username.")
+         return res.status(400).send({error: "Invalid username."})
 
       const token = crypto.randomBytes(15).toString('hex')
 
@@ -82,13 +82,13 @@ router.post('/forgot_password', async(req, res) => {
          context: { token }
       }, (err) => {
          if(err)
-            return res.status(400).send('Failed to send recovery token! :(')
-         return res.send('Your token to redefine your password was sent!')
+            return res.status(400).send({error: 'Failed to send recovery token! :('})
+         return res.send({error: 'Your token to redefine your password was sent!'})
       })
 
       console.log(token, now)
    }catch(err){
-      res.status(400).send("Password recovery failed")
+      res.status(400).send({error: "Password recovery failed"})
       console.log(err)
    }
 })
@@ -101,14 +101,14 @@ router.post('/reset_password', async(req, res) => {
          .select("+passwordResetToken passwordResetExpires")
 
       if (!user)
-         return res.status(400).send("Invalid username.")
+         return res.status(400).send({error:"Invalid username."})
 
       if (token !== user.passwordResetToken)
-         return res.status(400).send('Invalid token.')
+         return res.status(400).send({error: 'Invalid token.'})
 
       const now = new Date()
       if (now > user.passwordResetExpires)
-         return res.status(400).send('This token has expired. Generate a new one')
+         return res.status(400).send({error: 'This token has expired. Generate a new one'})
 
       user.password = password
       user.passwordResetToken = undefined
@@ -116,9 +116,9 @@ router.post('/reset_password', async(req, res) => {
 
       await user.save()
 
-      return res.send("Password change successful! Now you can use your new credentials")
+      return res.send({ok: "Password change successful! Now you can use your new credentials"})
    }catch(err){
-      res.status(400).send('Failed to reset password :(')
+      res.status(400).send({error: 'Failed to reset password :('})
    }
 })
 
