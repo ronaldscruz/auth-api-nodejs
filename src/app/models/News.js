@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require("mongoose-paginate")
 
 const NewsSchema = new mongoose.Schema({
    category: {
@@ -44,6 +45,9 @@ const NewsSchema = new mongoose.Schema({
    },
 })
 
+NewsSchema.plugin(mongoosePaginate)
+
 const News = mongoose.model("News", NewsSchema)
+
 
 module.exports = News
