@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 require('./app/controllers/index')(app)
 
+app.get("/", (req, res) => {
+   res.send({ ok: "API running..." })
+})
+
 app.listen(process.env.PORT || 5000)
 
 
