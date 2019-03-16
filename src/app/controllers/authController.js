@@ -83,7 +83,7 @@ router.post('/forgot_password', async(req, res) => {
       }, (err) => {
          if(err)
             return res.status(400).send({error: 'Failed to send recovery token! :('})
-         return res.send({ok: 'Your token to redefine your password was sent!'})
+         return res.send({error: 'Your token to redefine your password was sent!'})
       })
 
       console.log(token, now)
@@ -95,7 +95,6 @@ router.post('/forgot_password', async(req, res) => {
 
 router.post('/reset_password', async(req, res) => {
    const { email, token, password } = req.body
-   // const password = req.params.token
 
    try{
       const user = await User.findOne({email})

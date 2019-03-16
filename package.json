@@ -1,5 +1,5 @@
 {
-  "name": "auth-api-nodejs",
+  "name": "login-api-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,14 +18,10 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.0",
-    "mongoose": "^5.4.19",
+    "mongoose": "^5.4.17",
     "mongoose-paginate": "^5.0.3",
     "nodemailer": "^5.1.1",
     "nodemailer-express-handlebars": "^3.0.0",
     "path": "^0.12.7"
-  },
-  "engines": {
-    "node": "8.10.0",
-    "npm": "6.8.0"
   }
 }

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const authMiddlware = require('../middlewares/auth')
 
+const User = require('../models/User')
 const News = require('../models/News')
 
 router.use(authMiddlware)
