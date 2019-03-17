@@ -49,5 +49,5 @@ NewsSchema.plugin(mongoosePaginate)
 
 const News = mongoose.model("News", NewsSchema)
 
-
+console.log('> Model "News" ok!')
 module.exports = News

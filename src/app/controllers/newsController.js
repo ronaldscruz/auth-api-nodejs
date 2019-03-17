@@ -63,5 +63,5 @@ router.delete('/remove/:id', async(req, res) => {
    }
 })
 
-
+console.log('> NewsController OK!')
 module.exports = app => app.use("/manage_news", router)

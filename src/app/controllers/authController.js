@@ -122,4 +122,5 @@ router.post('/reset_password', async(req, res) => {
    }
 })
 
+console.log('> AuthController OK!')
 module.exports = app => app.use("/auth", router)

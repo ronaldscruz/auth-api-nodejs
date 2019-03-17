@@ -44,4 +44,5 @@ UserSchema.pre('save', async function(next){
 
 const User = mongoose.model("User", UserSchema)
 
+console.log('> Model "User" ok!')
 module.exports = User

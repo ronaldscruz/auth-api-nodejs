@@ -1,5 +1,3 @@
-require('dotenv').load()
-
 const path = require('path')
 const mailer = require('nodemailer')
 const hbs = require('nodemailer-express-handlebars')
@@ -21,5 +19,7 @@ transport.use('compile', hbs({
    viewPath: path.resolve('./src/resources/mail'),
    extName: '.hbs'
 }))
+
+console.log('> Mailer loaded')
 
 module.exports = transport
