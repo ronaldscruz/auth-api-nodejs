@@ -93,8 +93,9 @@ router.post('/forgot_password', async(req, res) => {
    }
 })
 
-router.post('/reset_password', async(req, res) => {
-   const { email, token, password } = req.body
+router.post('/reset_password/:token', async(req, res) => {
+   const { email, password } = req.body
+   const token = req.params.token
 
    try{
       const user = await User.findOne({email})
