@@ -59,6 +59,7 @@ router.post('/forgot_password', async(req, res) => {
 
    try{
       const user = await User.findOne({email})
+      const userId = user.id
 
       if (!user)
          return res.status(400).send({error: "Invalid username."})
@@ -79,7 +80,7 @@ router.post('/forgot_password', async(req, res) => {
          to: email,
          from: 'ronald@fastcoding.com',
          template: '/auth/forgot_password',
-         context: { token }
+         context: { token, userId }
       }, (err) => {
          if(err)
             return res.status(400).send({error: 'Failed to send recovery token! :('})
@@ -93,12 +94,13 @@ router.post('/forgot_password', async(req, res) => {
    }
 })
 
-router.post('/reset_password/:token', async(req, res) => {
-   const { email, password } = req.body
+router.post('/reset_password/:token/:userId', async(req, res) => {
+   const { password } = req.body
    const token = req.params.token
+   const userId = req.params.userId
 
    try{
-      const user = await User.findOne({email})
+      const user = await User.findById(userId)
          .select("+passwordResetToken passwordResetExpires")
 
       if (!user)
