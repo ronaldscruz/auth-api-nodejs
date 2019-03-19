@@ -45,8 +45,8 @@ router.post('/create', async(req, res) => {
 // Update
 router.put('/update/:id', async(req, res) => {
    try{
-      const news = await News.findByIdAndUpdate(req.params.id, {...req.body, author: req.userId})
-      return res.send(news)
+      await News.findByIdAndUpdate(req.params.id, {...req.body, author: req.userId})
+      return res.send({ok: 'Update successful!'})
    }catch(err){
       return res.status(400).send({error: "Error updating your news"})
    }
