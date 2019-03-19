@@ -12,7 +12,7 @@ router.use(authMiddlware)
 router.get('/', async(req, res) => {
    try{
       const {page = 1} = req.query
-      const news = await News.paginate({}, {page, limit: 10, populate: 'autor'})
+      const news = await News.paginate({}, {page, limit: 10, populate: 'author'})
       return res.send(news)
    }catch(err){
       return res.status(400).send({error: "Error loading your news"})
